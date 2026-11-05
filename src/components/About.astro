@@ -1,0 +1,82 @@
+---
+import Icon from "./Icon.astro";
+
+const team = [
+  {
+    initials: "V",
+    name: "Valentina",
+    role: "Psicóloga",
+    text: "Acompañamiento emocional y estimulación cognitiva.",
+  },
+  {
+    initials: "I",
+    name: "Idoia",
+    role: "Trabajadora social",
+    text: "Apoyos, recursos y coordinación con las familias.",
+  },
+];
+---
+
+<section id="nosotras" class="section">
+  <div class="container-page grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
+    <div>
+      <p class="eyebrow">Quiénes somos</p>
+      <h2 class="section-title mt-4">
+        Dos profesionales, una misma forma de cuidar.
+      </h2>
+
+      <p class="mt-5 text-[1.1rem] leading-relaxed text-sage-deep">
+        Somos <strong class="text-olive">Valentina</strong>, psicóloga, e
+        <strong class="text-olive">Idoia</strong>, trabajadora social. Creamos
+        Pausa Activa porque creemos que la mejor residencia es el hogar que has
+        creado.
+      </p>
+      <p class="mt-4 text-[1.1rem] leading-relaxed text-sage-deep">
+        Trabajamos para que sigas decidiendo, disfrutando y formando parte de tu
+        comunidad. Con calma, con cercanía y con un plan hecho a tu medida.
+      </p>
+
+      <a href="#contacto" class="btn btn-outline mt-7">
+        Hablamos sin compromiso
+        <Icon name="arrow-right" size={20} />
+      </a>
+    </div>
+
+    <ul class="grid gap-4 sm:grid-cols-2">
+      {
+        team.map((person) => (
+          <li class="rounded-[1.5rem] border border-olive/10 bg-cream-soft p-6 text-center">
+            <span
+              class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-peach text-[2rem] font-bold text-olive"
+              aria-hidden="true"
+            >
+              {person.initials}
+            </span>
+            <h3 class="mt-4 text-[1.35rem] leading-tight">{person.name}</h3>
+            <p class="mt-1 text-[0.95rem] font-bold tracking-[0.08em] text-sage-deep uppercase">
+              {person.role}
+            </p>
+            <p class="mt-3 text-[1rem] leading-snug text-sage-deep">
+              {person.text}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div class="container-page mt-10">
+    <div
+      class="flex flex-col gap-4 rounded-[1.5rem] bg-olive px-6 py-7 text-cream sm:flex-row sm:items-center sm:justify-between sm:px-9"
+    >
+      <div>
+        <p class="text-[1.15rem] font-bold">No sustituimos; sumamos.</p>
+        <p class="mt-1 text-[1rem] leading-snug text-cream/80">
+          Complementamos los recursos que ya existen y te ayudamos a conectar
+          con los apoyos adecuados.
+        </p>
+      </div>
+      <Icon name="heart" size={40} class="shrink-0 text-peach" />
+    </div>
+  </div>
+</section>

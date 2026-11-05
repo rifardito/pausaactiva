@@ -1,0 +1,72 @@
+---
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+---
+
+<section id="donde" class="section border-y border-olive/10 bg-cream-soft">
+  <div class="container-page grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
+    <div class="flex flex-col justify-center">
+      <p class="eyebrow">Dónde estamos</p>
+      <h2 class="section-title mt-4">En el centro de Logroño.</h2>
+      <p class="mt-5 text-[1.1rem] leading-relaxed text-sage-deep">
+        Si vienes a vernos, llámanos antes y te esperamos. También vamos a tu
+        casa en Logroño y alrededores.
+      </p>
+
+      <dl class="mt-7 space-y-5">
+        <div class="grid grid-cols-[auto_1fr] gap-x-3">
+          <Icon
+            name="map-pin"
+            size={22}
+            class="row-span-2 mt-1 shrink-0 text-sage-deep"
+          />
+          <dt class="text-[0.85rem] font-bold tracking-[0.12em] text-sage-deep uppercase">
+            Dirección
+          </dt>
+          <dd class="text-[1.05rem] font-bold">
+            {site.street}<br />{site.city}
+          </dd>
+        </div>
+
+        <div class="grid grid-cols-[auto_1fr] gap-x-3">
+          <Icon
+            name="clock"
+            size={22}
+            class="row-span-2 mt-1 shrink-0 text-sage-deep"
+          />
+          <dt class="text-[0.85rem] font-bold tracking-[0.12em] text-sage-deep uppercase">
+            Horarios
+          </dt>
+          <dd>
+            <span class="font-bold">Oficina:</span> {site.officeHours}
+            <br />
+            <span class="font-bold">Teléfono:</span> {site.phoneHours}
+          </dd>
+        </div>
+      </dl>
+
+      <a
+        href={site.mapsDirections}
+        target="_blank"
+        rel="noopener"
+        class="btn btn-primary mt-7 self-start"
+      >
+        <Icon name="map-pin" size={20} />
+        Cómo llegar
+      </a>
+    </div>
+
+    <div
+      class="min-h-[20rem] overflow-hidden rounded-[1.75rem] border border-olive/10 bg-cream"
+    >
+      <iframe
+        src={site.mapsEmbed}
+        title="Mapa de Pausa Activa en Calle Miguel Villanueva 6, Logroño"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        class="h-full min-h-[20rem] w-full"
+        style="border:0"
+      ></iframe>
+    </div>
+  </div>
+</section>

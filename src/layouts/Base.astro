@@ -1,0 +1,158 @@
+---
+import "@fontsource/atkinson-hyperlegible/400.css";
+import "@fontsource/atkinson-hyperlegible/700.css";
+import "../styles/global.css";
+import { site } from "../data/site";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = "/img/og-image.jpg",
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://pausaactiva.es/#organizacion",
+  name: "Pausa Activa",
+  description:
+    "Acompañamiento y bienestar para personas mayores en Logroño: estimulación cognitiva y física, talleres grupales, comida a domicilio y apoyo en gestiones.",
+  url: "https://pausaactiva.es/",
+  image: ogImage.href,
+  logo: new URL("/img/logo.png", Astro.site).href,
+  telephone: "+34648173662",
+  email: site.email,
+  priceRange: "€€",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Calle Miguel Villanueva, 6, 2º-4",
+    addressLocality: "Logroño",
+    addressRegion: "La Rioja",
+    postalCode: "26001",
+    addressCountry: "ES",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 42.4638711,
+    longitude: -2.4456294,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+      ],
+      opens: "09:00",
+      closes: "15:00",
+    },
+  ],
+  areaServed: { "@type": "City", name: "Logroño" },
+  sameAs: [site.instagram, site.facebook],
+  founder: [
+    { "@type": "Person", name: "Valentina", jobTitle: "Psicóloga" },
+    { "@type": "Person", name: "Idoia", jobTitle: "Trabajadora social" },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#f1f4e2" />
+
+    <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/img/icon-512.png" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pausa Activa" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Pausa Activa · Logroño" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+    <script is:inline>
+      (() => {
+        try {
+          const value = localStorage.getItem("pa-text-size");
+          const map = { md: "100%", lg: "112.5%", xl: "125%" };
+          if (value && map[value]) {
+            document.documentElement.style.fontSize = map[value];
+          }
+        } catch (error) {
+          /* sin acceso a localStorage */
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a href="#contenido" class="skip-link">Saltar al contenido</a>
+    <slot />
+
+    <script is:inline>
+      (() => {
+        const sizes = { md: "100%", lg: "112.5%", xl: "125%" };
+        const buttons = document.querySelectorAll("[data-textsize]");
+
+        const apply = (value) => {
+          const size = sizes[value] ? value : "md";
+          document.documentElement.style.fontSize = sizes[size];
+          buttons.forEach((button) => {
+            button.setAttribute(
+              "aria-pressed",
+              String(button.dataset.textsize === size),
+            );
+          });
+        };
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const value = button.dataset.textsize;
+            apply(value);
+            try {
+              localStorage.setItem("pa-text-size", value);
+            } catch (error) {
+              /* sin acceso a localStorage */
+            }
+          });
+        });
+
+        let saved = "md";
+        try {
+          saved = localStorage.getItem("pa-text-size") || "md";
+        } catch (error) {
+          /* sin acceso a localStorage */
+        }
+        apply(saved);
+      })();
+    </script>
+  </body>
+</html>

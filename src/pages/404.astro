@@ -1,0 +1,41 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Icon from "../components/Icon.astro";
+import { site } from "../data/site";
+---
+
+<Base
+  title="Página no encontrada | Pausa Activa"
+  description="La página que buscas no existe. Vuelve al inicio o contáctanos."
+  noindex={true}
+>
+  <Header />
+
+  <main id="contenido" class="section">
+    <div class="container-page">
+      <div class="mx-auto max-w-xl text-center">
+        <p class="eyebrow">Error 404</p>
+        <h1 class="h1 mt-4">No encontramos esta página.</h1>
+        <p class="mt-5 text-[1.15rem] leading-relaxed text-sage-deep">
+          Puede que el enlace haya cambiado o que la dirección esté mal
+          escrita. Puedes volver al inicio o llamarnos directamente.
+        </p>
+
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+          <a href="/" class="btn btn-primary">
+            <Icon name="home" size={20} />
+            Volver al inicio
+          </a>
+          <a href={site.phoneHref} class="btn btn-outline">
+            <Icon name="phone" size={20} />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Base>

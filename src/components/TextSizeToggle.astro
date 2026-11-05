@@ -1,0 +1,39 @@
+---
+interface Props {
+  class?: string;
+  tone?: "light" | "dark";
+}
+
+const { class: className = "", tone = "light" } = Astro.props;
+---
+
+<div
+  class:list={[
+    "ts-toggle",
+    tone === "dark" && "ts-toggle--dark",
+    "flex w-max items-center",
+    className,
+  ]}
+  role="group"
+  aria-label="Tamaño del texto"
+>
+  <button type="button" class="ts-btn" data-textsize="md" aria-label="Texto normal">
+    A
+  </button>
+  <button
+    type="button"
+    class="ts-btn"
+    data-textsize="lg"
+    aria-label="Texto más grande"
+  >
+    A+
+  </button>
+  <button
+    type="button"
+    class="ts-btn"
+    data-textsize="xl"
+    aria-label="Texto mucho más grande"
+  >
+    A++
+  </button>
+</div>

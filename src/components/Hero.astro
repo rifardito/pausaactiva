@@ -1,0 +1,85 @@
+---
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+---
+
+<section id="inicio" class="relative overflow-hidden">
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div
+    class="container-page relative grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-24"
+  >
+    <div>
+      <p class="eyebrow">Pausa Activa · Logroño</p>
+
+      <h1 class="h1 mt-5">
+        La mejor residencia es el hogar que has creado.
+      </h1>
+
+      <p
+        class="mt-6 max-w-xl text-[1.15rem] leading-relaxed text-sage-deep sm:text-[1.3rem]"
+      >
+        Cuidamos tus capacidades, creamos vínculos y te facilitamos el día a
+        día. En tu casa o en nuestro espacio del centro de Logroño.
+      </p>
+
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <a href={site.phoneHref} class="btn btn-primary">
+          <Icon name="phone" size={22} />
+          <span>Llámanos · {site.phoneLabel}</span>
+        </a>
+        <a
+          href={site.whatsappHref}
+          class="btn btn-wa"
+          target="_blank"
+          rel="noopener"
+        >
+          <Icon name="whatsapp" size={22} />
+          <span>Escríbenos por WhatsApp</span>
+        </a>
+      </div>
+
+      <p
+        class="mt-6 flex items-start gap-2 text-[1rem] leading-snug text-sage-deep"
+      >
+        <Icon name="clock" size={18} class="mt-0.5 shrink-0" />
+        <span>Atendemos en Logroño y alrededores · Teléfono de 9:00 a 20:00</span>
+      </p>
+    </div>
+
+    <div class="relative mx-auto hidden w-full max-w-sm sm:block lg:max-w-md">
+      <!--
+        FOTO PENDIENTE
+        Cuando la clienta envíe la fotografía, sustituir el contenido de
+        .photo-frame por:
+        <img src="/img/hero.jpg" alt="..." class="h-full w-full object-cover" />
+      -->
+      <div class="photo-frame">
+        <div
+          aria-hidden="true"
+          class="absolute -top-16 -right-16 h-56 w-56 rounded-full bg-peach/60 blur-2xl"
+        >
+        </div>
+        <div
+          aria-hidden="true"
+          class="absolute -bottom-20 -left-10 h-52 w-52 rounded-full bg-sage/20 blur-2xl"
+        >
+        </div>
+        <img
+          src="/img/logo.png"
+          alt=""
+          width="627"
+          height="627"
+          class="relative w-52 sm:w-60"
+        />
+      </div>
+
+      <div class="absolute -bottom-4 left-1/2 w-max -translate-x-1/2">
+        <span class="chip">
+          <Icon name="home" size={18} class="text-sage-deep" />
+          A domicilio y en nuestro espacio
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

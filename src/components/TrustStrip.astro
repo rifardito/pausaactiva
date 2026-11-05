@@ -1,0 +1,42 @@
+---
+import Icon from "./Icon.astro";
+
+const items = [
+  {
+    icon: "home",
+    title: "En tu casa",
+    text: "Vamos a domicilio, sin que tengas que moverte.",
+  },
+  {
+    icon: "map-pin",
+    title: "En el centro de Logroño",
+    text: "Miguel Villanueva 6, 2º-4.",
+  },
+  {
+    icon: "users",
+    title: "Equipo profesional",
+    text: "Psicóloga y trabajadora social.",
+  },
+];
+---
+
+<section class="bg-olive text-cream">
+  <h2 class="sr-only">Dónde trabajamos</h2>
+  <div class="container-page grid gap-7 py-9 sm:grid-cols-3 sm:gap-8 sm:py-11">
+    {
+      items.map((item) => (
+        <div class="flex items-start gap-4">
+          <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-peach text-olive">
+            <Icon name={item.icon} size={24} />
+          </span>
+          <div>
+            <h3 class="text-[1.1rem] leading-tight">{item.title}</h3>
+            <p class="mt-1 text-[1rem] leading-snug text-cream/80">
+              {item.text}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

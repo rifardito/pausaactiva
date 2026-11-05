@@ -1,0 +1,119 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+
+const updated = "5 de noviembre de 2026";
+---
+
+<Base
+  title="Aviso legal | Pausa Activa"
+  description="Información legal y datos identificativos del titular del sitio web de Pausa Activa, Logroño."
+>
+  <Header />
+
+  <main id="contenido" class="section">
+    <div class="container-page">
+      <div class="legal">
+        <p class="eyebrow">Información legal</p>
+        <h1 class="mt-3 text-[clamp(2rem,4vw,2.75rem)]">Aviso legal</h1>
+        <p class="mt-3 text-[0.95rem]">Última actualización: {updated}</p>
+
+        <h2>1. Datos identificativos del titular</h2>
+        <p>
+          En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de
+          Servicios de la Sociedad de la Información y de Comercio Electrónico
+          (LSSI-CE), se informa de los siguientes datos:
+        </p>
+        <ul>
+          <li><strong>Titular:</strong> {site.legal.titular} (persona autónoma)</li>
+          <li><strong>Nombre comercial:</strong> Pausa Activa</li>
+          <li><strong>NIF:</strong> {site.legal.nif}</li>
+          <li><strong>Domicilio:</strong> {site.legal.fiscal}</li>
+          <li>
+            <strong>Correo electrónico:</strong>
+            <a href={site.emailHref}>{site.email}</a>
+          </li>
+          <li>
+            <strong>Teléfonos:</strong> {site.phoneLabel} · {site.phone2Label}
+          </li>
+        </ul>
+
+        <h2>2. Objeto</h2>
+        <p>
+          Este sitio web tiene carácter informativo. Su finalidad es dar a
+          conocer los servicios de acompañamiento y bienestar para personas
+          mayores que presta Pausa Activa en Logroño y su entorno, así como
+          facilitar el contacto con las personas interesadas.
+        </p>
+        <p>
+          El acceso al sitio atribuye la condición de usuario e implica la
+          aceptación de las condiciones recogidas en este aviso legal.
+        </p>
+
+        <h2>3. Condiciones de uso</h2>
+        <p>
+          La persona usuaria se compromete a utilizar el sitio web y sus
+          contenidos de forma lícita, diligente y respetuosa, y a no realizar
+          actuaciones que puedan dañar el sitio, impedir su normal
+          funcionamiento o vulnerar los derechos de terceros.
+        </p>
+
+        <h2>4. Propiedad intelectual e industrial</h2>
+        <p>
+          Los textos, imágenes, logotipos, diseño y demás contenidos de este
+          sitio web son titularidad de Pausa Activa o se utilizan con
+          autorización. Queda prohibida su reproducción, distribución,
+          comunicación pública o transformación sin autorización expresa.
+        </p>
+
+        <h2>5. Responsabilidad</h2>
+        <p>
+          Pausa Activa adopta medidas razonables para mantener la información
+          actualizada y libre de errores, pero no garantiza la ausencia de
+          interrupciones o inexactitudes. La información sobre servicios y
+          precios es orientativa y no constituye una oferta contractual; las
+          condiciones definitivas se acuerdan de forma individual con cada
+          persona interesada.
+        </p>
+
+        <h2>6. Enlaces a terceros</h2>
+        <p>
+          El sitio incluye enlaces a plataformas de terceros (WhatsApp,
+          Instagram, Facebook y Google Maps). Pausa Activa no se responsabiliza
+          del contenido ni de las políticas de privacidad de dichos servicios,
+          que se rigen por sus propias condiciones.
+        </p>
+
+        <h2>7. Protección de datos</h2>
+        <p>
+          El tratamiento de los datos personales que puedas facilitarnos se
+          describe en la
+          <a href="/privacidad">política de privacidad</a>.
+        </p>
+
+        <h2>8. Modificaciones</h2>
+        <p>
+          Pausa Activa se reserva el derecho a modificar este aviso legal para
+          adaptarlo a novedades legislativas o cambios en su actividad. La
+          versión vigente será siempre la publicada en este sitio web.
+        </p>
+
+        <h2>9. Legislación aplicable y jurisdicción</h2>
+        <p>
+          Las presentes condiciones se rigen por la legislación española. Para
+          cualquier controversia derivada del uso del sitio web, las partes se
+          someten a los juzgados y tribunales de Logroño, salvo que la ley
+          disponga otro fuero.
+        </p>
+
+        <p class="mt-10">
+          <a href="/" class="btn btn-outline">← Volver al inicio</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Base>
