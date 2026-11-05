@@ -1,95 +1,52 @@
-# Pausa Activa · Web
+# Pausa Activa · Web oficial
 
-Web informativa de **Pausa Activa**, empresa de acompañamiento y bienestar para
-personas mayores en Logroño.
+Web de **Pausa Activa**, espacio de acompañamiento y bienestar para personas mayores en Logroño (La Rioja).
 
-- **Stack:** Astro 5 + Tailwind CSS 4 (salida 100 % estática)
-- **Hosting:** GitHub Pages
-- **Dominio:** `pausaactiva.es`
-- **Sin cookies, sin analítica, sin backend**
+Hecha con **HTML, CSS y JavaScript**, sin frameworks, sin compilación y sin dependencias. Se publica en GitHub Pages con el dominio **https://pausaactiva.es**.
 
-## Requisitos
+## Ver la web en local
 
-- Node.js 20 o superior
-- npm
+No abras `index.html` con doble clic: las rutas son absolutas y se verá sin estilos. Usa **Visual Studio Code + Live Server**:
 
-## Comandos
+1. Abre esta carpeta en VS Code.
+2. Clic derecho en `index.html` → **Open with Live Server**.
 
-```bash
-npm install       # instalar dependencias
-npm run dev       # servidor de desarrollo (http://localhost:4321)
-npm run build     # compilar a /dist
-npm run preview   # previsualizar el resultado compilado
-```
+## Publicar un cambio
+
+1. Edita el archivo (por ejemplo `index.html`).
+2. Haz commit y push, o edita directamente desde GitHub y pulsa **Commit changes**.
+3. Espera 1-2 minutos y recarga `https://pausaactiva.es` con `Ctrl+F5`.
 
 ## Estructura
 
-```
-src/
-├─ data/site.ts          ← teléfonos, dirección, redes y datos legales (todo centralizado)
-├─ styles/global.css     ← colores de marca, tipografía y estilos base
-├─ layouts/Base.astro    ← <head>, SEO, JSON-LD y preferencias de tamaño de texto
-├─ components/           ← una sección de la página por componente
-└─ pages/
-   ├─ index.astro        ← la página principal
-   ├─ aviso-legal.astro
-   ├─ privacidad.astro
-   └─ 404.astro
-public/
-├─ CNAME                 ← dominio para GitHub Pages
-├─ img/                  ← logo, favicons e imagen para redes
-└─ robots.txt / sitemap.xml
-```
-
-## Cambiar datos de contacto
-
-Todo está en `src/data/site.ts`: teléfonos, WhatsApp, email, dirección, horarios,
-redes sociales y datos legales. Cambiar ahí y volver a compilar.
-
-## Añadir las fotos
-
-1. Guardar la foto en `public/img/` (por ejemplo `hero.jpg`, 1600×900).
-2. En `src/components/Hero.astro`, sustituir el bloque marcado como
-   `FOTO PENDIENTE` por:
-
-```html
-<img
-  src="/img/hero.jpg"
-  alt="Descripción de la foto"
-  class="h-full w-full object-cover"
-  width="1600"
-  height="900"
-  loading="eager"
-  fetchpriority="high"
-/>
+```text
+├─ index.html                  Página principal
+├─ aviso-legal/index.html      Aviso legal
+├─ privacidad/index.html       Política de privacidad
+├─ 404.html                    Página de error
+├─ css/estilos.css             Estilos y colores
+├─ js/app.js                   Botones A / A+ / A++
+├─ img/                        Logo, iconos y fotos
+├─ fonts/                      Atkinson Hyperlegible
+├─ CNAME                       Dominio pausaactiva.es
+├─ robots.txt
+├─ sitemap.xml
+├─ .nojekyll
+├─ GUIA-MANTENIMIENTO.md       Manual paso a paso
+└─ README.md
 ```
 
-## Regenerar logo, favicons e imagen social
+## Documentación
 
-```bash
-node scripts/generate-assets.mjs
-```
+Toda la información práctica está en **[GUIA-MANTENIMIENTO.md](GUIA-MANTENIMIENTO.md)**: cómo cambiar textos, teléfonos, precios, fotos, colores, cómo publicar y cómo recuperar la versión anterior en Astro.
 
-## Despliegue en GitHub Pages
+## Versión anterior
 
-1. Crear un repositorio **público** en GitHub y subir este proyecto a `master`.
-2. En el repositorio: **Settings → Pages → Source: GitHub Actions**.
-3. Cada push a `master` compila y publica automáticamente
-   (`.github/workflows/deploy.yml`).
-4. Configurar el dominio en el registrador:
-   - `A @ → 185.199.108.153`
-   - `A @ → 185.199.109.153`
-   - `A @ → 185.199.110.153`
-   - `A @ → 185.199.111.153`
-   - `CNAME www → <usuario>.github.io`
-5. En **Settings → Pages**: escribir `pausaactiva.es` como custom domain y activar
-   **Enforce HTTPS**.
+La versión hecha con Astro se conserva en la rama `astro-original`, en la etiqueta `astro-v1` y en el zip `PausaActiva-Astro-backup-2026-11-05.zip` del escritorio. No se utiliza para publicar.
 
-> El archivo `public/CNAME` ya contiene el dominio.
+## Accesibilidad
 
-## Pendiente antes de publicar
-
-- [ ] Fotos definitivas de la clienta (hero + secciones + espacio).
-- [ ] PDF del folleto (añadir en `public/` y enlazarlo en Contacto).
-- [ ] Confirmar si se publica el domicilio fiscal en el aviso legal.
-- [ ] Revisar textos con Valentina e Idoia.
+- Texto grande, alto contraste y tipografía Atkinson Hyperlegible.
+- Botones para ampliar el texto al 100 %, 112,5 % y 125 %.
+- Navegación por teclado, enlace “Saltar al contenido” y `alt` en las imágenes.
+- Sin cookies, sin analítica y sin formularios.

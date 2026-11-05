@@ -1,24 +1,13 @@
-# build output
-dist/
-.astro/
+# Esta web no se compila: son HTML, CSS y JS tal cual.
 
-# dependencies
-node_modules/
-
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# environment variables
-.env
-.env.production
-
-# macOS / Windows
+# Sistema
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# editors
+# Editores
 .vscode/
 .idea/
+
+# Registros
+npm-debug.log*
