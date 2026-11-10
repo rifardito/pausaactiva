@@ -263,11 +263,15 @@ En la cabecera se ve así:
 
 El `alt` va vacío porque el enlace que lo contiene ya tiene `aria-label="Pausa Activa · Ir al inicio"`. Así el lector de pantalla no repite el nombre.
 
-El tamaño lo manda la clase `.logo-wordmark` de `css/estilos.css`: 38 px de alto en móvil, 44 px entre 640 y 1023 px y 48 px a partir de 1024 px. Está en píxeles fijos a propósito, para que los botones A / A+ / A++ no rompan la cabecera. En móviles de menos de 360 px baja a 30 px para que quepa todo con el texto en A++.
+El tamaño lo manda la clase `.logo-wordmark` de `css/estilos.css`: 40 px de alto en móvil, 48 px entre 640 y 1023 px y 56 px a partir de 1024 px. Está en píxeles fijos a propósito, para que los botones A / A+ / A++ no rompan la cabecera. En móviles de menos de 360 px baja a 32 px para que quepa todo con el texto en A++.
+
+El símbolo redondo (la imagen cuadrada) se ajusta con las clases `.header-mark` en la cabecera y `.footer-mark` en el pie, también en `css/estilos.css`: 46 px, 50 px y 56 px. Antes llevaba las clases `h-11 w-11` de Tailwind en el HTML, pero esas ganaban siempre y no dejaban cambiar el tamaño desde el CSS, así que se quitaron.
+
+> Ojo: no vuelvas a poner `h-11 w-11` (ni `h-*` / `w-*`) a esas dos imágenes. Si lo haces, el tamaño del CSS se ignorará otra vez.
 
 > En pantallas de menos de 420 px se oculta el símbolo cuadrado (`.header-mark`) y queda solo el nombre, para que quepa todo sin solaparse.
 
-> Con el nombre grande, el menú de navegación (Servicios, Nosotras…) solo se muestra a partir de 1280 px de ancho. Por debajo se quedan el teléfono y los botones A / A+ / A++, que es lo importante en un móvil o en un portátil pequeño. La regla está al final de `css/estilos.css`, fuera de las capas, porque así gana a las utilidades de Tailwind.
+> Con el nombre grande, el menú de navegación (Servicios, Nosotras…) solo se muestra a partir de 1280 px de ancho. Por debajo se quedan el teléfono y los botones A / A+ / A++, que es lo importante en un móvil o en un portátil pequeño. La regla está al final de `css/estilos.css`, fuera de las capas, porque así gana a las utilidades de Tailwind. En esa misma zona se juntan un poco los enlaces del menú (`gap: 1.25rem`) para que quepan con el logo grande y el texto en A++.
 
 **Si algún día cambia el nombre o la tipografía:**
 
