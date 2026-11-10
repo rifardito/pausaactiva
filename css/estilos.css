@@ -478,19 +478,35 @@
      Va en píxeles fijos a propósito: los logotipos no crecen con A / A+ / A++,
      así la cabecera nunca se rompe ni se solapa. */
   .logo-wordmark {
-    height: 34px;
+    height: 38px;
     width: auto;
     flex-shrink: 0;
   }
   @media (min-width: 640px) {
     .logo-wordmark {
-      height: 38px;
+      height: 44px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .logo-wordmark {
+      height: 48px;
     }
   }
   /* En móviles muy estrechos se reduce un poco para que quepa con A++. */
   @media (max-width: 359px) {
     .logo-wordmark {
-      height: 28px;
+      height: 30px;
+    }
+  }
+  /* Portada: la foto no debe empujar el texto fuera de la primera pantalla.
+     En pantallas grandes se acorta y la portada tiene menos aire arriba. */
+  @media (min-width: 1024px) {
+    #inicio .container-page {
+      padding-block: 4rem;
+    }
+    #inicio .photo-frame {
+      aspect-ratio: auto;
+      height: clamp(400px, 52vh, 480px);
     }
   }
   /* En móviles muy estrechos el símbolo deja sitio al nombre y al botón. */
@@ -501,6 +517,15 @@
     .header-mark {
       display: block;
     }
+  }
+  /* El teléfono de la cabecera se queda siempre en una sola línea. */
+  header a.btn span {
+    white-space: nowrap;
+  }
+  /* El bloque del logotipo no se encoge nunca: si se encogiera, la imagen
+     se deformaría. */
+  header > .container-page > a:first-child {
+    flex-shrink: 0;
   }
   .nav-link {
     color: var(--color-olive);
@@ -1607,4 +1632,15 @@
 @property --tw-backdrop-sepia {
   syntax: "*";
   inherits: false;
+}
+
+/* ---------------------------------------------------------------------------
+   Ajustes fuera de capas: así ganan a las utilidades de Tailwind.
+   Con el logotipo grande, el menú solo cabe entero a partir de 1280 px.
+   Por debajo se queda el teléfono y los botones A / A+ / A++.
+   --------------------------------------------------------------------------- */
+@media (max-width: 1279.98px) {
+  header > .container-page > nav {
+    display: none;
+  }
 }

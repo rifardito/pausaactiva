@@ -217,6 +217,8 @@ Por este:
 
 El `alt` debe describir la foto de forma breve y real. Si la foto es solo decorativa, se puede dejar `alt=""`.
 
+> En pantallas grandes, el hueco de la foto mide entre 400 y 480 px de alto y se adapta a la altura de la ventana (`#inicio .photo-frame` en `css/estilos.css`). Así la portada cabe entera en la primera pantalla y no corta el texto de abajo. Si la foto queda muy recortada, cambia esos números.
+
 ### Otras fotos
 
 Para añadir una foto en cualquier sección, copia la estructura de una imagen existente y cambia `src` y `alt`:
@@ -261,9 +263,11 @@ En la cabecera se ve así:
 
 El `alt` va vacío porque el enlace que lo contiene ya tiene `aria-label="Pausa Activa · Ir al inicio"`. Así el lector de pantalla no repite el nombre.
 
-El tamaño lo manda la clase `.logo-wordmark` de `css/estilos.css`: 34 px de alto en móvil y 38 px a partir de 640 px de ancho. Está en píxeles fijos a propósito, para que los botones A / A+ / A++ no rompan la cabecera. En móviles de menos de 360 px baja a 28 px para que quepa todo con el texto en A++.
+El tamaño lo manda la clase `.logo-wordmark` de `css/estilos.css`: 38 px de alto en móvil, 44 px entre 640 y 1023 px y 48 px a partir de 1024 px. Está en píxeles fijos a propósito, para que los botones A / A+ / A++ no rompan la cabecera. En móviles de menos de 360 px baja a 30 px para que quepa todo con el texto en A++.
 
 > En pantallas de menos de 420 px se oculta el símbolo cuadrado (`.header-mark`) y queda solo el nombre, para que quepa todo sin solaparse.
+
+> Con el nombre grande, el menú de navegación (Servicios, Nosotras…) solo se muestra a partir de 1280 px de ancho. Por debajo se quedan el teléfono y los botones A / A+ / A++, que es lo importante en un móvil o en un portátil pequeño. La regla está al final de `css/estilos.css`, fuera de las capas, porque así gana a las utilidades de Tailwind.
 
 **Si algún día cambia el nombre o la tipografía:**
 
