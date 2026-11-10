@@ -238,25 +238,42 @@ Los iconos de la pestaña del navegador son `img/icon-192.png`, `img/icon-512.pn
 
 ### Nombre “Pausa Activa” con la fuente Funny Dreams
 
-Cuando tengas el nombre exportado desde Canva (PNG transparente, a 3x), guárdalo como `img/logo-pausa-activa.png` y sustituye el texto de la cabecera:
+La fuente Funny Dreams no se puede instalar en la web: la licencia de Canva solo permite usarla dentro de los diseños exportados. Por eso el nombre de la cabecera y del pie es **una imagen PNG transparente** exportada desde Canva, no texto.
 
-```html
-<span class="text-[1.3rem] leading-none font-bold tracking-tight text-olive">
-  Pausa Activa
-</span>
-```
+Hay dos versiones, ya colocadas en las 4 páginas:
 
-Por:
+| Archivo | Color | Dónde se usa |
+| --- | --- | --- |
+| `img/logo-pausa-activa.png` | Oliva (`#334b1c`) | Cabecera, sobre fondo crema. |
+| `img/logo-pausa-activa-claro.png` | Crema (`#f1f4e2`) | Pie de página, sobre fondo oliva. |
+
+En la cabecera se ve así:
 
 ```html
 <img
   src="/img/logo-pausa-activa.png"
-  alt="Pausa Activa"
-  class="h-9 w-auto"
+  alt=""
+  width="712"
+  height="167"
+  class="logo-wordmark"
 />
 ```
 
-En el pie, el texto está en color claro; usa una versión del logo en blanco o crema si el fondo es oscuro. El mismo cambio hay que hacerlo en las 4 páginas.
+El `alt` va vacío porque el enlace que lo contiene ya tiene `aria-label="Pausa Activa · Ir al inicio"`. Así el lector de pantalla no repite el nombre.
+
+El tamaño lo manda la clase `.logo-wordmark` de `css/estilos.css`: 30 px de alto en móvil y 34 px a partir de 640 px de ancho. Está en píxeles fijos a propósito, para que los botones A / A+ / A++ no rompan la cabecera.
+
+> En pantallas de menos de 420 px se oculta el símbolo cuadrado (`.header-mark`) y queda solo el nombre, para que quepa todo sin solaparse.
+
+**Si algún día cambia el nombre o la tipografía:**
+
+1. Exporta de Canva el nombre con **fondo transparente** y buena resolución (unos 1400 px de ancho).
+2. Guarda el archivo con el mismo nombre (`logo-pausa-activa.png` y `logo-pausa-activa-claro.png`). Así no hay que tocar el HTML.
+3. Si la nueva imagen tiene otra proporción, actualiza los números de `width` y `height` del `<img>` en las 4 páginas (cabecera y pie).
+4. Recarga y comprueba que se ve bien en móvil y en ordenador.
+
+> El SVG que entrega Canva no sirve para la web: es un archivo enorme (741 KB) que en realidad contiene imágenes incrustadas, no dibujos vectoriales. Para la web se usan siempre PNG.
+
 
 ---
 
