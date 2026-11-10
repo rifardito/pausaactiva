@@ -478,13 +478,19 @@
      Va en píxeles fijos a propósito: los logotipos no crecen con A / A+ / A++,
      así la cabecera nunca se rompe ni se solapa. */
   .logo-wordmark {
-    height: 30px;
+    height: 34px;
     width: auto;
     flex-shrink: 0;
   }
   @media (min-width: 640px) {
     .logo-wordmark {
-      height: 34px;
+      height: 38px;
+    }
+  }
+  /* En móviles muy estrechos se reduce un poco para que quepa con A++. */
+  @media (max-width: 359px) {
+    .logo-wordmark {
+      height: 28px;
     }
   }
   /* En móviles muy estrechos el símbolo deja sitio al nombre y al botón. */

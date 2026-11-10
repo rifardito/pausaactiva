@@ -261,7 +261,7 @@ En la cabecera se ve así:
 
 El `alt` va vacío porque el enlace que lo contiene ya tiene `aria-label="Pausa Activa · Ir al inicio"`. Así el lector de pantalla no repite el nombre.
 
-El tamaño lo manda la clase `.logo-wordmark` de `css/estilos.css`: 30 px de alto en móvil y 34 px a partir de 640 px de ancho. Está en píxeles fijos a propósito, para que los botones A / A+ / A++ no rompan la cabecera.
+El tamaño lo manda la clase `.logo-wordmark` de `css/estilos.css`: 34 px de alto en móvil y 38 px a partir de 640 px de ancho. Está en píxeles fijos a propósito, para que los botones A / A+ / A++ no rompan la cabecera. En móviles de menos de 360 px baja a 28 px para que quepa todo con el texto en A++.
 
 > En pantallas de menos de 420 px se oculta el símbolo cuadrado (`.header-mark`) y queda solo el nombre, para que quepa todo sin solaparse.
 
