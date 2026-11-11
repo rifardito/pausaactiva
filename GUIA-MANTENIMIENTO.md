@@ -46,7 +46,7 @@ Cada vez que guardes un archivo, Live Server recarga la página automáticamente
 Dentro de `index.html` hay comentarios que marcan cada zona. Búscalos con `Ctrl+F`:
 
 - `CABECERA`: logo, menú, botones A / A+ / A++ y teléfono.
-- `PORTADA`: titular grande, botones de llamada/WhatsApp y foto.
+- `PORTADA`: titular grande, botones de llamada/WhatsApp y la foto de fondo.
 - `FRANJA DE CONFIANZA`: en tu casa y en el centro de Logroño.
 - `QUIÉNES SOMOS`: Valentina e Idoia.
 - `POR QUÉ NACE`: las cuatro razones del post de Instagram, en tarjetas centradas.
@@ -187,37 +187,38 @@ Es importante que sigan siendo **orientativos**: así no se convierte en una ofe
 
 ### Foto de la portada
 
-En `index.html`, busca `FOTO PENDIENTE`. Ahora hay un hueco con el logo. Cuando tengas la foto:
-
-1. Guarda la foto en `img/` con un nombre sin espacios ni tildes, por ejemplo `hero.jpg`.
-2. Recomendado: vertical, unos 1200 × 1500 píxeles, formato JPG o WebP.
-3. Sustituye este bloque que hay dentro de `.photo-frame`:
+La foto grande del inicio es `img/hero-chicas-1600.webp` (1600 × 900 px) y su versión ligera para móvil es `img/hero-chicas-800.webp`. En `index.html`, el bloque está al principio del `<main>`, dentro de `<section id="inicio">`:
 
 ```html
 <img
-  src="/img/logo.png"
-  alt=""
-  width="627"
-  height="627"
-  class="relative w-52 sm:w-60"
+  class="hero-photo"
+  src="/img/hero-chicas-1600.webp"
+  srcset="
+    /img/hero-chicas-800.webp   800w,
+    /img/hero-chicas-1600.webp 1600w
+  "
+  sizes="100vw"
+  alt="Valentina e Idoia, creadoras de Pausa Activa"
+  width="1600"
+  height="900"
+  fetchpriority="high"
+  decoding="async"
 />
 ```
 
-Por este:
+Para cambiarla por otra foto:
 
-```html
-<img
-  src="/img/hero.jpg"
-  alt="Valentina acompañando a una persona mayor en su domicilio"
-  class="absolute inset-0 h-full w-full object-cover"
-/>
-```
+1. Guarda la nueva foto en `img/` con un nombre sin espacios ni tildes.
+2. Exporta dos tamaños (por ejemplo con <https://squoosh.app> o Canva): uno de 1600 px de ancho y otro de 800, en formato WebP, calidad 70-75. No deberían pesar más de 150 KB la grande.
+3. Cambia el `src`, el `srcset`, el `alt` y los valores de `width` y `height` por los de la foto nueva.
 
-4. Borra el comentario que empieza por `FOTO PENDIENTE`.
+Cómo está colocada:
 
-El `alt` debe describir la foto de forma breve y real. Si la foto es solo decorativa, se puede dejar `alt=""`.
+- En **móvil y tableta** la foto se ve como una banda arriba y el texto va debajo, sobre crema.
+- Desde **1024 px** la foto ocupa toda la portada y el texto se apoya en una franja crema a la izquierda, que se funde con la foto. Está en `css/estilos.css`, en el degradado de `.hero-scrim`.
+- **Encuadre**: si la foto queda mal recortada, cambia `object-position: 70% 40%` en `.hero-photo` (primero el desplazamiento horizontal, después el vertical). Con `70%` la foto se pega a la derecha.
 
-> En pantallas grandes, el hueco de la foto mide entre 400 y 480 px de alto y se adapta a la altura de la ventana (`#inicio .photo-frame` en `css/estilos.css`). Así la portada cabe entera en la primera pantalla y no corta el texto de abajo. Si la foto queda muy recortada, cambia esos números.
+> El texto nunca debe quedar encima de una zona oscura de la foto: si cambiáis la imagen por una más oscura, comprobad que el titular se sigue leyendo bien. Lo más seguro es que las personas de la foto queden en la mitad derecha.
 
 ### Otras fotos
 
@@ -231,6 +232,22 @@ Para añadir una foto en cualquier sección, copia la estructura de una imagen e
 - En GitHub Pages las mayúsculas importan: `Foto.JPG` y `foto.jpg` no son lo mismo.
 - No subas fotos de varios MB: intenta que no pasen de 300-500 KB.
 - No uses fotos de personas sin su permiso.
+
+Las dos fotos de «Quiénes somos» son `img/valentina.webp` e `img/idoia.webp` (cuadradas, 321 y 336 px). Se muestran en círculo con la clase `.team-photo`, que está en `css/estilos.css`. Para cambiar una cara, sobrescribe el archivo con otra foto cuadrada y el mismo nombre, o cambia el `src` en `index.html`:
+
+```html
+<img
+  src="/img/valentina.webp"
+  alt="Valentina, psicóloga de Pausa Activa"
+  width="321"
+  height="321"
+  class="team-photo"
+  loading="lazy"
+  decoding="async"
+/>
+```
+
+El círculo mide `7.5rem` (unos 120 px) y lleva un aro melocotón de 3 px. Para agrandarlo o reducirlo, cambia esos dos valores en `.team-photo`.
 
 ### Logo
 
@@ -449,7 +466,7 @@ Haz también una copia de seguridad de vez en cuando desde GitHub: **Code → Do
 - [ ] El aviso legal y la privacidad tienen los datos correctos.
 - [ ] He probado A, A+ y A++ y se lee bien todo.
 - [ ] He probado en móvil y en ordenador.
-- [ ] No hay textos de prueba ni huecos de “FOTO PENDIENTE”.
+- [ ] No hay textos de prueba ni huecos pendientes.
 - [ ] La web cargada no muestra errores en la consola del navegador.
 
 ---
