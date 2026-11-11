@@ -458,6 +458,69 @@
     letter-spacing: -0.01em;
     font-size: clamp(1.9rem, 3.6vw, 2.65rem);
   }
+  /* POR QUÉ NACE: tarjetas centradas, con el mismo aire que las del equipo.
+     Todos los tamaños van en rem para que los botones A / A+ / A++ los escalen. */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    list-style: none;
+  }
+  @media (min-width: 640px) {
+    .why-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+  }
+  .why-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 1.5rem;
+    border: 1px solid #334b1c1a;
+    background: var(--color-cream);
+    padding: 1.75rem 1.5rem;
+  }
+  .why-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 9999px;
+    background: var(--color-peach);
+    color: var(--color-olive);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+  .why-title {
+    margin-top: 1rem;
+    font-size: 1.35rem;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+  .why-text {
+    margin-top: 0.5rem;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--color-sage-deep);
+    text-wrap: pretty;
+  }
+  /* Franja verde: cada bloque va centrado en su mitad. */
+  .strip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  @media (min-width: 640px) {
+    .strip-item {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
   .skip-link {
     z-index: 100;
     background: var(--color-olive);

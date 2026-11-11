@@ -47,12 +47,12 @@ Dentro de `index.html` hay comentarios que marcan cada zona. Búscalos con `Ctrl
 
 - `CABECERA`: logo, menú, botones A / A+ / A++ y teléfono.
 - `PORTADA`: titular grande, botones de llamada/WhatsApp y foto.
-- `FRANJA DE CONFIANZA`: Logroño, a domicilio, equipo titulado.
-- `SERVICIOS`: las 3 líneas y los precios.
-- `POR QUÉ PAUSA ACTIVA`
-- `PROPÓSITO`
-- `MÉTODO DE TRABAJO`
+- `FRANJA DE CONFIANZA`: en tu casa y en el centro de Logroño.
 - `QUIÉNES SOMOS`: Valentina e Idoia.
+- `POR QUÉ NACE`: las cuatro razones del post de Instagram, en tarjetas centradas.
+- `SERVICIOS`: las 3 líneas y los precios.
+- `PROPÓSITO`: está comentado (no se ve). Para recuperarlo, borra `<!--` y `-->`.
+- `MÉTODO DE TRABAJO`: también comentado.
 - `DÓNDE ESTAMOS`: dirección, horario y mapa.
 - `CONTACTO`: teléfono, WhatsApp, correo y redes.
 - `PIE DE PÁGINA`
@@ -331,6 +331,8 @@ Para duplicar una sección, copia un bloque completo que empiece por `<section` 
 5. Si añades un enlace al menú, cámbialo en las 4 páginas.
 
 Si quitas una sección, comprueba que ningún enlace del menú apunte a su `id`.
+
+> **Ojo con las clases nuevas.** El CSS es una copia ya compilada de Tailwind: solo existen las clases que ya se usaban al generarlo. Si escribes una clase nueva como `sm:flex-col`, `sm:text-center` o `sm:gap-12`, no dará error pero **no hará nada**. Para estilos nuevos, usa las clases propias de la web (`.why-card`, `.why-num`, `.why-title`, `.why-text`, `.strip-item`…) y edítalas en `css/estilos.css`, dentro de `@layer components`.
 
 ---
 
