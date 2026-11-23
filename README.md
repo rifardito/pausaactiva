@@ -2,7 +2,7 @@
 
 Web de **Pausa Activa**, espacio de acompañamiento y bienestar para personas mayores en Logroño (La Rioja).
 
-Hecha con **HTML, CSS y JavaScript**, sin frameworks, sin compilación y sin dependencias. Se publica en GitHub Pages con el dominio **https://pausaactiva.es**.
+Hecha con **HTML, CSS y JavaScript**, sin frameworks, sin compilación y sin dependencias. Se publica en GitHub Pages con el dominio **https://pausaactiva.org**.
 
 ## Ver la web en local
 
@@ -15,7 +15,7 @@ No abras `index.html` con doble clic: las rutas son absolutas y se verá sin est
 
 1. Edita el archivo (por ejemplo `index.html`).
 2. Haz commit y push, o edita directamente desde GitHub y pulsa **Commit changes**.
-3. Espera 1-2 minutos y recarga `https://pausaactiva.es` con `Ctrl+F5`.
+3. Espera 1-2 minutos y recarga `https://pausaactiva.org` con `Ctrl+F5`.
 
 ## Estructura
 
@@ -28,7 +28,7 @@ No abras `index.html` con doble clic: las rutas son absolutas y se verá sin est
 ├─ js/app.js                   Botones A / A+ / A++
 ├─ img/                        Logo, iconos y fotos
 ├─ fonts/                      Atkinson Hyperlegible
-├─ CNAME                       Dominio pausaactiva.es
+├─ CNAME                       Dominio pausaactiva.org
 ├─ robots.txt
 ├─ sitemap.xml
 ├─ .nojekyll

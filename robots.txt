@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pausaactiva.es/sitemap.xml
+Sitemap: https://pausaactiva.org/sitemap.xml

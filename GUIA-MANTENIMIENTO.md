@@ -14,7 +14,7 @@ Son 4 páginas HTML que comparten una hoja de estilos y un archivo de JavaScript
 | `js/app.js` | Los botones A / A+ / A++ del tamaño de letra. |
 | `img/` | Logo, iconos y fotos. |
 | `fonts/` | Tipografía Atkinson Hyperlegible (no tocar). |
-| `CNAME` | Dominio `pausaactiva.es` para GitHub Pages (no borrar). |
+| `CNAME` | Dominio `pausaactiva.org` para GitHub Pages (no borrar). |
 | `.nojekyll` | Archivo vacío necesario para GitHub Pages (no borrar). |
 
 > **Importante:** los nombres de las clases (`class="..."`) vienen del diseño original. No hace falta entenderlos para cambiar textos, precios o teléfonos. Solo hay que respetarlos.
@@ -23,7 +23,7 @@ Son 4 páginas HTML que comparten una hoja de estilos y un archivo de JavaScript
 
 ## 1. Cómo ver la web en tu ordenador
 
-La web está pensada para publicarse en `https://pausaactiva.es`, en la raíz del dominio. Por eso las rutas de los archivos empiezan por `/` (`/css/estilos.css`, `/img/logo.png`).
+La web está pensada para publicarse en `https://pausaactiva.org`, en la raíz del dominio. Por eso las rutas de los archivos empiezan por `/` (`/css/estilos.css`, `/img/logo.png`).
 
 **No abras `index.html` haciendo doble clic**: el navegador lo abrirá como un archivo suelto y no encontrará los estilos. Se verá “en blanco y negro”.
 
@@ -71,7 +71,7 @@ La cabecera y el pie están **repetidos en las 4 páginas**. Si cambias un telé
 4. Haz el cambio.
 5. Abajo, escribe un resumen (por ejemplo “Actualizo el teléfono”) y pulsa **Commit changes**.
 6. GitHub Pages tarda entre 1 y 2 minutos en publicarlo.
-7. Recarga `https://pausaactiva.es` con `Ctrl+F5` para verlo sin caché.
+7. Recarga `https://pausaactiva.org` con `Ctrl+F5` para verlo sin caché.
 
 ### Opción con Visual Studio Code
 
@@ -217,6 +217,7 @@ Cómo está colocada:
 - En **móvil y tableta** la foto se ve como una banda arriba y el texto va debajo, sobre crema.
 - Desde **1024 px** la foto ocupa toda la portada y el texto se apoya en una franja crema a la izquierda, que se funde con la foto. Está en `css/estilos.css`, en el degradado de `.hero-scrim`.
 - **Encuadre**: si la foto queda mal recortada, cambia `object-position: 70% 40%` en `.hero-photo` (primero el desplazamiento horizontal, después el vertical). Con `70%` la foto se pega a la derecha.
+- **Botones de la portada**: en el móvil van uno debajo del otro, a todo el ancho, y desde 640 px van en la misma fila. Lo controla la clase `.hero-cta` de `css/estilos.css`. Si algún día cambiáis el texto por uno mucho más largo, avisad a quien os lleve la web: esa fila está pensada para no partirse en dos líneas.
 
 > El texto nunca debe quedar encima de una zona oscura de la foto: si cambiáis la imagen por una más oscura, comprobad que el titular se sigue leyendo bien. Lo más seguro es que las personas de la foto queden en la mitad derecha.
 
@@ -286,9 +287,9 @@ El símbolo redondo (la imagen cuadrada) se ajusta con las clases `.header-mark`
 
 > Ojo: no vuelvas a poner `h-11 w-11` (ni `h-*` / `w-*`) a esas dos imágenes. Si lo haces, el tamaño del CSS se ignorará otra vez.
 
-> En pantallas de menos de 420 px se oculta el símbolo cuadrado (`.header-mark`) y queda solo el nombre, para que quepa todo sin solaparse.
+> El símbolo cuadrado (`.header-mark`) se ve siempre en la cabecera, también en móvil, junto al nombre. En pantallas de menos de 360 px solo se reduce el nombre a 32 px de alto.
 
-> Con el nombre grande, el menú de navegación (Servicios, Nosotras…) solo se muestra a partir de 1280 px de ancho. Por debajo se quedan el teléfono y los botones A / A+ / A++, que es lo importante en un móvil o en un portátil pequeño. La regla está al final de `css/estilos.css`, fuera de las capas, porque así gana a las utilidades de Tailwind. En esa misma zona se juntan un poco los enlaces del menú (`gap: 1.25rem`) para que quepan con el logo grande y el texto en A++.
+> Con el nombre grande, el menú de navegación (Servicios, Nosotras…) solo se muestra a partir de 1280 px de ancho. Por debajo de 768 px la cabecera se queda solo con el logo, porque en la portada el teléfono y el WhatsApp van fijos en la barra de abajo. El botón de teléfono de la cabecera lleva la clase `header-phone` y se oculta por debajo de 768 px al final de `css/estilos.css`; desde 768 px vuelven el teléfono y los botones A / A+ / A++. La regla del menú está fuera de las capas, porque así gana a las utilidades de Tailwind. En esa misma zona se juntan un poco los enlaces del menú (`gap: 1.25rem`) para que quepan con el logo grande y el texto en A++.
 
 **Si algún día cambia el nombre o la tipografía:**
 
@@ -379,12 +380,12 @@ Si el repositorio y el dominio ya están configurados, no hace falta repetir est
 3. En el repositorio: **Settings → Pages**.
 4. En **Source**, elige **Deploy from a branch**.
 5. Branch: `master` (o `main`, el que uses). Folder: `/ (root)`. Pulsa **Save**.
-6. En **Custom domain**, escribe `pausaactiva.es` y pulsa **Save**.
+6. En **Custom domain**, escribe `pausaactiva.org` y pulsa **Save**.
 7. Cuando el dominio empiece a funcionar, activa **Enforce HTTPS**.
 
 ### DNS del dominio
 
-En el panel donde compraste `pausaactiva.es`, configura:
+En el panel donde compraste `pausaactiva.org`, configura:
 
 - Para el dominio sin `www` (apex): 4 registros **A** que apunten a:
   - `185.199.108.153`
@@ -397,11 +398,11 @@ Los cambios de DNS pueden tardar desde unos minutos hasta 24-48 horas.
 
 ### Muy importante durante las pruebas
 
-La web usa rutas absolutas (`/css/...`, `/img/...`) porque está pensada para `https://pausaactiva.es`. En la dirección provisional de GitHub (`https://TUUSUARIO.github.io/pausaactiva-web/`) **se verá sin estilos**: no es un error de la web, es que las rutas apuntan a la raíz del dominio. Para probarla antes de que el dominio esté listo, usa Live Server en tu ordenador.
+La web usa rutas absolutas (`/css/...`, `/img/...`) porque está pensada para `https://pausaactiva.org`. En la dirección provisional de GitHub (`https://TUUSUARIO.github.io/pausaactiva-web/`) **se verá sin estilos**: no es un error de la web, es que las rutas apuntan a la raíz del dominio. Para probarla antes de que el dominio esté listo, usa Live Server en tu ordenador.
 
 No borres:
 
-- `CNAME` (contiene `pausaactiva.es`).
+- `CNAME` (contiene `pausaactiva.org`).
 - `.nojekyll` (aunque esté vacío).
 
 ---
@@ -445,7 +446,7 @@ Haz también una copia de seguridad de vez en cuando desde GitHub: **Code → Do
 
 | Problema | Causa probable | Solución |
 | --- | --- | --- |
-| Se ve sin colores ni estilos | Has abierto `index.html` con doble clic, o estás en la URL provisional `usuario.github.io/repo/`. | Usa Live Server o espera al dominio `pausaactiva.es`. |
+| Se ve sin colores ni estilos | Has abierto `index.html` con doble clic, o estás en la URL provisional `usuario.github.io/repo/`. | Usa Live Server o espera al dominio `pausaactiva.org`. |
 | No veo el cambio que acabo de subir | GitHub Pages tarda 1-2 minutos y el navegador guarda caché. | Espera, recarga con `Ctrl+F5` y comprueba el último commit. |
 | Una foto no aparece | Nombre distinto, mayúsculas, o no está en `img/`. | Revisa `src` y el nombre exacto del archivo. |
 | Las tildes se ven raras | El archivo se guardó con otra codificación. | Guarda en UTF-8. |
